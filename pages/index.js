@@ -24,6 +24,16 @@ export default function Home() {
     , 'Friendship', 'Growth', 'Healthy', 'Hopeful', 'Intelligent', 'Leadership', 'Love', 'Passionate', 'Peaceful', 'Positive', 'Powerful'
     , 'Purposeful', 'Secure', 'Sharing', 'Spiritual', 'Strong', 'Thankful', 'Transformative', 'Travel', 'Wealth']
 
+    const [title, setTitle] = useState('Start your reflection')
+
+    function titleChangeHandler(event) {
+        if(event.target.value == ""){
+            setTitle("Start your reflection")
+        }else{
+            setTitle(`Howdy, ${event.target.value}`)
+        }
+    }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -34,11 +44,17 @@ export default function Home() {
 
       <main>
           <Container centerContent={true}>
-              <Heading fontSize={'5xl'}>Start your reflection</Heading>
+              <Heading fontSize={'5xl'}>{title}</Heading>
           </Container>
           <Container>
               <VStack>
+                  <Heading>What is your name </Heading>
+                  <Input autoComplete={"new-password"} onChange={titleChangeHandler}/>
+
+              </VStack>
+              <VStack>
                   <Heading>Reflect Words</Heading>
+                  <Text>How would you describe your past year</Text>
                   <HStack>
                       {/* Reflect Words*/}
                       <Select width={'200px'} >
@@ -56,8 +72,10 @@ export default function Home() {
                   </HStack>
               </VStack>
               <VStack>
-                      <Heading>Dream Words</Heading>
-                      <HStack>
+                  <Heading>Dream Words</Heading>
+                  <Text>Where do you want to go</Text>
+
+                  <HStack>
                           {/* Dream Words*/}
                           <Select width={'200px'} >
                               <option></option>
