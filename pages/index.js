@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import {
+    Button,
+    Checkbox,
     Container, Editable,
     FormLabel,
     Heading,
@@ -10,7 +12,7 @@ import {
     MenuItemOption, NumberDecrementStepper, NumberIncrementStepper, NumberInput, NumberInputField, NumberInputStepper,
     Select,
     Stack,
-    Text,
+    Text, Textarea,
     VStack
 } from "@chakra-ui/react";
 import {useState} from "react";
@@ -25,13 +27,19 @@ export default function Home() {
     , 'Purposeful', 'Secure', 'Sharing', 'Spiritual', 'Strong', 'Thankful', 'Transformative', 'Travel', 'Wealth']
 
     const [title, setTitle] = useState('Start your reflection')
+    const [focus, setFocus] = useState([]);
 
     function titleChangeHandler(event) {
         if(event.target.value == ""){
             setTitle("Start your reflection")
         }else{
-            setTitle(`Howdy, ${event.target.value}`)
+            const dateNow = new Date().toISOString().slice(0, 10)
+            setTitle(`${event.target.value}'s Reflection on \n ${dateNow}`)
         }
+    }
+
+    function addFocusHandler(event){
+
     }
 
   return (
@@ -43,9 +51,10 @@ export default function Home() {
       </Head>
 
       <main>
-          <Container centerContent={true}>
+          <Container textAlign={'center'} centerContent={'true'}>
               <Heading fontSize={'5xl'}>{title}</Heading>
           </Container>
+          <br/>
           <Container>
               <VStack>
                   <Heading>What is your name </Heading>
@@ -104,8 +113,77 @@ export default function Home() {
                                   <NumberDecrementStepper />
                               </NumberInputStepper>
                           </NumberInput>
+                          <Checkbox>Focus</Checkbox>
+                      </HStack>
+                      <HStack>
+                          <Input />
+                          <NumberInput defaultValue={1} min={1} max={10}>
+                              <NumberInputField />
+                              <NumberInputStepper>
+                                  <NumberIncrementStepper />
+                                  <NumberDecrementStepper />
+                              </NumberInputStepper>
+                          </NumberInput>
+                          <Checkbox>Focus</Checkbox>
+                      </HStack>
+                      <HStack>
+                          <Input />
+                          <NumberInput defaultValue={1} min={1} max={10}>
+                              <NumberInputField />
+                              <NumberInputStepper>
+                                  <NumberIncrementStepper />
+                                  <NumberDecrementStepper />
+                              </NumberInputStepper>
+                          </NumberInput>
+                          <Checkbox>Focus</Checkbox>
+
+                      </HStack>
+                      <HStack>
+                          <Input />
+                          <NumberInput defaultValue={1} min={1} max={10}>
+                              <NumberInputField />
+                              <NumberInputStepper>
+                                  <NumberIncrementStepper />
+                                  <NumberDecrementStepper />
+                              </NumberInputStepper>
+                          </NumberInput>
+                          <Checkbox>Focus</Checkbox>
+                      </HStack>
+                      <HStack>
+                          <Input />
+                          <NumberInput defaultValue={1} min={1} max={10}>
+                              <NumberInputField />
+                              <NumberInputStepper>
+                                  <NumberIncrementStepper />
+                                  <NumberDecrementStepper />
+                              </NumberInputStepper>
+                          </NumberInput>
+                          <Checkbox>Focus</Checkbox>
                       </HStack>
                   </VStack>
+              </VStack>
+              <VStack>
+                  <Heading>Goals</Heading>
+                  <Text>What do you want to accomplish</Text>
+                  <HStack>
+
+                      <VStack>
+                          <Input placeholder={"Health"}/>
+                          <Textarea placeholder='- Workout 3x a week' />
+                      </VStack>
+                      <VStack>
+                          <Input placeholder={"Relationship"}/>
+                          <Textarea placeholder='- Have a date 1x a week' />
+                      </VStack>
+                      <VStack>
+                          <Input placeholder={"Health"}/>
+                          <Textarea placeholder='- Meditate 5x a week' />
+                      </VStack>
+
+
+                  </HStack>
+                  <Button  colorScheme={"blue"}>Generate Reflection</Button>
+
               </VStack>
 
 
